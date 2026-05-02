@@ -1,0 +1,44 @@
+.split-pane {
+  display: grid;
+  grid-template-columns: var(--editor-width) 6px 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.split-pane__left {
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.split-pane__right {
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.split-pane__divider {
+  cursor: col-resize;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  touch-action: none;
+  transition: background 0.15s;
+}
+
+.split-pane__divider:hover,
+.split-pane__divider:active {
+  background: var(--accent);
+}
+
+.split-pane__divider-handle {
+  width: 2px;
+  height: 32px;
+  border-radius: 1px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.split-pane__divider:hover .split-pane__divider-handle,
+.split-pane__divider:active .split-pane__divider-handle {
+  background: rgba(255, 255, 255, 0.6);
+}

@@ -1,0 +1,73 @@
+.minimal {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  padding: var(--page-margin);
+  padding-top: calc(var(--page-margin) * 1.5);
+}
+
+.minimal-header {
+  margin-bottom: calc(var(--section-spacing) * 1.5);
+}
+
+.minimal-header h1 {
+  font-size: 2.2em;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: #1a1a1a;
+}
+
+.minimal-contact {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 6px;
+}
+
+.minimal-heading {
+  font-size: 0.75em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.minimal-section {
+  margin-bottom: var(--section-spacing);
+}
+
+.minimal-entry {
+  margin-bottom: 10px;
+}
+
+.minimal-entry h3 {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.minimal-muted {
+  font-weight: 400;
+  color: #666;
+}
+
+.minimal-dates {
+  font-size: 0.85em;
+  color: #888;
+  margin-top: 1px;
+}
+
+.minimal-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 0.95em;
+}
+
+.minimal ul {
+  margin-top: 4px;
+}
+
+.minimal li {
+  font-size: 0.95em;
+  color: #333;
+}

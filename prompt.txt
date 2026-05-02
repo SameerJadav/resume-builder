@@ -1,0 +1,31 @@
+this is a fresh react application build with vite. i want you to make a resume builder. i want following features in it:
+
+
+
+A great resume builder centers on a smooth editing experience — typically a live preview where changes appear in real time alongside the editor.
+
+Users should be able to drag and drop sections to reorder them, and add/remove blocks (experience, education, skills, etc.) without friction.
+
+Templates & Design
+
+
+
+
+
+A library of professionally designed templates (keep only 5 for now), organized by style
+
+
+
+Easy font, color, and spacing customization without breaking the layout
+
+
+
+Mobile-responsive output so the resume looks great printed or on screen
+
+
+
+ATS-friendly (Applicant Tracking System) template options for corporate job hunting
+
+
+
+make it so the user has no issues to create a resume, the idea is to have features that works and not have application bloated with features, whatever feature we are giving must work perfectly. keep this project simple and small, it is not complicated. you can only use this frontend, there will be no backend server, this is frontend only, you can have any package you want. 

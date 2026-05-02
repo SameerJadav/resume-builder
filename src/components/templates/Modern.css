@@ -1,0 +1,143 @@
+.modern {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  display: flex;
+  min-height: 100%;
+}
+
+.modern-sidebar {
+  width: 35%;
+  background: var(--accent);
+  color: #fff;
+  padding: var(--page-margin);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-spacing);
+}
+
+.modern-sidebar__name h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.modern-sidebar-section h2 {
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  opacity: 0.8;
+  font-weight: 600;
+}
+
+.modern-sidebar-section h3 {
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.modern-sidebar-section p {
+  font-size: 0.85em;
+  opacity: 0.9;
+}
+
+.modern-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modern-contact-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85em;
+}
+
+.modern-contact-label {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  letter-spacing: 0.5px;
+}
+
+.modern-skill-group {
+  margin-bottom: 6px;
+}
+
+.modern-cert {
+  margin-bottom: 8px;
+}
+
+.modern-cert strong {
+  font-size: 0.9em;
+}
+
+/* Main column */
+.modern-main {
+  flex: 1;
+  padding: var(--page-margin);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-spacing);
+}
+
+.modern-main-section h2 {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.modern-entry {
+  margin-bottom: 10px;
+}
+
+.modern-entry__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.modern-entry__row h3 {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.modern-company {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.modern-date {
+  font-size: 0.85em;
+  opacity: 0.7;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.modern-tech {
+  font-size: 0.85em;
+  color: #555;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.modern-link {
+  font-size: 0.85em;
+  color: var(--accent);
+}
+
+.modern-main ul {
+  margin-top: 4px;
+}
+
+.modern-main li {
+  font-size: 0.95em;
+}

@@ -1,0 +1,95 @@
+.executive {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  padding: var(--page-margin);
+}
+
+.exec-header {
+  margin-bottom: var(--section-spacing);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 12px;
+}
+
+.exec-header h1 {
+  font-size: 2em;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.exec-contact {
+  font-size: 0.9em;
+  color: #444;
+  margin-top: 4px;
+}
+
+.exec-heading {
+  font-size: 1.05em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
+}
+
+.exec-section {
+  margin-bottom: var(--section-spacing);
+}
+
+.exec-entry {
+  margin-bottom: 10px;
+}
+
+.exec-entry__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.exec-entry__top h3 {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.exec-org {
+  color: #444;
+  font-size: 0.9em;
+}
+
+.exec-dates {
+  font-size: 0.85em;
+  color: #666;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.exec-issuer {
+  font-weight: 400;
+  color: #555;
+}
+
+.exec-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95em;
+}
+
+.exec-tech {
+  font-size: 0.85em;
+  color: #555;
+  font-style: italic;
+}
+
+.executive ul {
+  margin-top: 4px;
+}
+
+.executive li {
+  font-size: 0.95em;
+}

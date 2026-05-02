@@ -1,0 +1,81 @@
+.section-editor {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+.section-editor--dragging {
+  box-shadow: var(--shadow-lg);
+}
+
+.section-editor__header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-bottom: 1px solid transparent;
+}
+
+.section-editor__body {
+  border-top: 1px solid var(--border);
+}
+
+.section-editor__drag {
+  cursor: grab;
+  padding: 4px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.section-editor__drag:hover {
+  color: var(--text);
+  background: var(--bg-hover);
+}
+
+.section-editor__toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-heading);
+  border-radius: 4px;
+  flex: 1;
+  text-align: left;
+}
+
+.section-editor__toggle:hover {
+  background: var(--bg-hover);
+}
+
+.section-editor__chevron {
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.section-editor__chevron--open {
+  transform: rotate(0deg);
+}
+
+.section-editor__chevron:not(.section-editor__chevron--open) {
+  transform: rotate(-90deg);
+}
+
+.section-editor__add {
+  padding: 4px;
+  color: var(--accent);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.section-editor__add:hover {
+  background: var(--accent-bg);
+}

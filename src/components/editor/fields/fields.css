@@ -1,0 +1,109 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field__label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.field__input {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--text-heading);
+  background: var(--bg);
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.field__input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.field__textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.field-row-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.field-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.field-checkbox input[type="checkbox"] {
+  accent-color: var(--accent);
+}
+
+/* Bullet list editor */
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bullet-list__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bullet-list__marker {
+  color: var(--text-secondary);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.bullet-list__remove {
+  padding: 4px;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bullet-list__remove:hover {
+  color: var(--danger);
+  background: rgba(220, 38, 38, 0.08);
+}
+
+.bullet-list__add {
+  font-size: 12px;
+  color: var(--accent);
+  padding: 4px 0;
+  text-align: left;
+  font-weight: 500;
+}
+
+.bullet-list__add:hover {
+  color: var(--accent-hover);
+}

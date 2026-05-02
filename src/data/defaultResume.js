@@ -1,0 +1,25 @@
+export const defaultResume = {
+  sectionOrder: [
+    'personalInfo',
+    'summary',
+    'experience',
+    'education',
+    'skills',
+    'projects',
+    'certifications',
+  ],
+  personalInfo: {
+    fullName: '',
+    email: '',
+    phone: '',
+    location: '',
+    linkedin: '',
+    website: '',
+  },
+  summary: { text: '' },
+  experience: [],
+  education: [],
+  skills: [],
+  projects: [],
+  certifications: [],
+};

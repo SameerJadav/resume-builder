@@ -1,0 +1,31 @@
+.template-root {
+  width: 100%;
+  min-height: 100%;
+  color: #1a1a1a;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.template-root h1,
+.template-root h2,
+.template-root h3 {
+  margin: 0;
+}
+
+.template-root p {
+  margin: 0;
+}
+
+.template-root ul {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.template-root li {
+  margin-bottom: 2px;
+}
+
+.template-root a {
+  color: inherit;
+  text-decoration: none;
+}

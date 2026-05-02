@@ -1,0 +1,31 @@
+.preview-panel {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.preview-page-scaler {
+  flex-shrink: 0;
+}
+
+.preview-page {
+  width: 816px;
+  min-height: 1056px;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+  overflow: visible;
+}
+
+@media print {
+  .preview-page-scaler {
+    zoom: 1 !important;
+  }
+
+  .preview-page {
+    box-shadow: none;
+    width: 100%;
+    min-height: auto;
+  }
+}
