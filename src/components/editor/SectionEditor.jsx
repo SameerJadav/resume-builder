@@ -25,9 +25,10 @@ export const SectionEditor = forwardRef(function SectionEditor(
   ref,
 ) {
   const [collapsed, setCollapsed] = useState(false);
-  const { actions } = useResume();
+  const { resume, actions } = useResume();
   const meta = sectionMeta[sectionKey];
   const EditorComponent = editorComponents[sectionKey];
+  const pageBreakActive = !!resume.pageBreaks?.[sectionKey];
 
   return (
     <div
@@ -65,6 +66,24 @@ export const SectionEditor = forwardRef(function SectionEditor(
           </svg>
           <span>{meta.label}</span>
         </button>
+        {sectionKey !== 'personalInfo' && (
+          <button
+            className={`section-editor__page-break ${pageBreakActive ? 'section-editor__page-break--active' : ''}`}
+            onClick={() => actions.toggleSectionPageBreak(sectionKey)}
+            type="button"
+            title="Force this section to start on a new page"
+            aria-pressed={pageBreakActive}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="2" y1="4" x2="12" y2="4" />
+              <line x1="2" y1="7" x2="4" y2="7" />
+              <line x1="6" y1="7" x2="8" y2="7" />
+              <line x1="10" y1="7" x2="12" y2="7" />
+              <line x1="2" y1="10" x2="12" y2="10" />
+              <polyline points="5,12 7,14 9,12" />
+            </svg>
+          </button>
+        )}
         {meta.isList && (
           <button
             className="section-editor__add"

@@ -1,6 +1,20 @@
-import { useResume } from '../../hooks/useResume';
+/* eslint-disable react-refresh/only-export-components */
 import './shared.css';
 import './Executive.css';
+
+function ExecutiveHeader({ personalInfo }) {
+  return (
+    <header className="exec-header">
+      <h1>{personalInfo.fullName || 'Your Name'}</h1>
+      <div className="exec-contact">
+        {[personalInfo.email, personalInfo.phone, personalInfo.location].filter(Boolean).join('  |  ')}
+      </div>
+      <div className="exec-contact">
+        {[personalInfo.linkedin, personalInfo.website].filter(Boolean).join('  |  ')}
+      </div>
+    </header>
+  );
+}
 
 function SectionHeading({ children }) {
   return <h2 className="exec-heading">{children}</h2>;
@@ -125,10 +139,7 @@ const sectionRenderers = {
   certifications: (r) => <CertificationsSection entries={r.certifications} />,
 };
 
-export default function Executive() {
-  const { resume, settings } = useResume();
-  const { personalInfo } = resume;
-
+export function getExecutiveBlocks({ resume, settings }) {
   const style = {
     '--accent': settings.accentColor,
     '--font-family': settings.fontFamily,
@@ -138,22 +149,12 @@ export default function Executive() {
     '--page-margin': `${settings.pageMargin}px`,
   };
 
-  return (
-    <div className="template-root executive" style={style}>
-      <header className="exec-header">
-        <h1>{personalInfo.fullName || 'Your Name'}</h1>
-        <div className="exec-contact">
-          {[personalInfo.email, personalInfo.phone, personalInfo.location].filter(Boolean).join('  |  ')}
-        </div>
-        <div className="exec-contact">
-          {[personalInfo.linkedin, personalInfo.website].filter(Boolean).join('  |  ')}
-        </div>
-      </header>
-      {resume.sectionOrder
-        .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
-        .map((key) => (
-          <div key={key}>{sectionRenderers[key](resume)}</div>
-        ))}
-    </div>
-  );
+  const blocks = [
+    { key: 'personalInfo', node: <ExecutiveHeader personalInfo={resume.personalInfo} /> },
+    ...resume.sectionOrder
+      .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
+      .map((key) => ({ key, node: sectionRenderers[key](resume) })),
+  ].filter((b) => b.node !== null);
+
+  return { rootClass: 'executive', style, blocks, paginate: true };
 }

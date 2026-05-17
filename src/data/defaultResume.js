@@ -22,4 +22,5 @@ export const defaultResume = {
   skills: [],
   projects: [],
   certifications: [],
+  pageBreaks: {},
 };

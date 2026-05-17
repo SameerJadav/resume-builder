@@ -1,6 +1,21 @@
-import { useResume } from '../../hooks/useResume';
+/* eslint-disable react-refresh/only-export-components */
 import './shared.css';
 import './Classic.css';
+
+function ClassicHeader({ personalInfo }) {
+  return (
+    <header className="classic-header">
+      <h1>{personalInfo.fullName || 'Your Name'}</h1>
+      <div className="classic-contact">
+        {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
+          .filter(Boolean)
+          .map((item, i) => (
+            <span key={i}>{item}</span>
+          ))}
+      </div>
+    </header>
+  );
+}
 
 function SectionHeading({ children }) {
   return (
@@ -137,10 +152,7 @@ const sectionRenderers = {
   certifications: (resume) => <CertificationsSection entries={resume.certifications} />,
 };
 
-export default function Classic() {
-  const { resume, settings } = useResume();
-  const { personalInfo } = resume;
-
+export function getClassicBlocks({ resume, settings }) {
   const style = {
     '--accent': settings.accentColor,
     '--font-family': settings.fontFamily,
@@ -150,24 +162,12 @@ export default function Classic() {
     '--page-margin': `${settings.pageMargin}px`,
   };
 
-  return (
-    <div className="template-root classic" style={style}>
-      <header className="classic-header">
-        <h1>{personalInfo.fullName || 'Your Name'}</h1>
-        <div className="classic-contact">
-          {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
-            .filter(Boolean)
-            .map((item, i) => (
-              <span key={i}>{item}</span>
-            ))}
-        </div>
-      </header>
+  const blocks = [
+    { key: 'personalInfo', node: <ClassicHeader personalInfo={resume.personalInfo} /> },
+    ...resume.sectionOrder
+      .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
+      .map((key) => ({ key, node: sectionRenderers[key](resume) })),
+  ].filter((b) => b.node !== null);
 
-      {resume.sectionOrder
-        .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
-        .map((key) => (
-          <div key={key}>{sectionRenderers[key](resume)}</div>
-        ))}
-    </div>
-  );
+  return { rootClass: 'classic', style, blocks, paginate: true };
 }

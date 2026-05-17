@@ -79,3 +79,27 @@
 .section-editor__add:hover {
   background: var(--accent-bg);
 }
+
+.section-editor__page-break {
+  padding: 4px;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.section-editor__page-break:hover {
+  background: var(--bg-hover);
+  color: var(--text);
+}
+
+.section-editor__page-break--active {
+  color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.section-editor__page-break--active:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+}

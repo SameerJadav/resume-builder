@@ -12,6 +12,16 @@ export function Toolbar() {
     pageStyle: `
       @page { size: letter; margin: 0; }
       body { margin: 0; padding: 0; }
+      .preview-pages { gap: 0 !important; }
+      .preview-page {
+        box-shadow: none !important;
+        break-after: page;
+        page-break-after: always;
+      }
+      .preview-page:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
     `,
   });
 

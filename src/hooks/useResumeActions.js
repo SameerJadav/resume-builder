@@ -117,6 +117,14 @@ export function useResumeActions(resume, setResume) {
     });
   }
 
+  function toggleSectionPageBreak(sectionKey) {
+    const current = resume.pageBreaks || {};
+    setResume({
+      ...resume,
+      pageBreaks: { ...current, [sectionKey]: !current[sectionKey] },
+    });
+  }
+
   function resetResume() {
     setResume(defaultResume);
   }
@@ -135,6 +143,7 @@ export function useResumeActions(resume, setResume) {
     addBullet,
     removeBullet,
     updateBullet,
+    toggleSectionPageBreak,
     resetResume,
     loadSample,
   };

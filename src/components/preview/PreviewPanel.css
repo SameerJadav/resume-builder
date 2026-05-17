@@ -4,28 +4,65 @@
   justify-content: center;
   align-items: flex-start;
   overflow-y: auto;
+  position: relative;
+}
+
+.preview-measurer {
+  position: absolute;
+  top: 0;
+  left: -10000px;
+  visibility: hidden;
+  pointer-events: none;
+  min-height: 0 !important;
 }
 
 .preview-page-scaler {
   flex-shrink: 0;
 }
 
+.preview-pages {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .preview-page {
   width: 816px;
-  min-height: 1056px;
+  height: 1056px;
   background: #fff;
   box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.preview-page--no-paginate {
+  height: auto;
+  min-height: 1056px;
   overflow: visible;
+  padding: 0;
 }
 
 @media print {
+  .preview-measurer {
+    display: none !important;
+  }
+
   .preview-page-scaler {
     zoom: 1 !important;
   }
 
+  .preview-pages {
+    gap: 0 !important;
+  }
+
   .preview-page {
-    box-shadow: none;
-    width: 100%;
-    min-height: auto;
+    box-shadow: none !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .preview-page:last-child {
+    break-after: auto;
+    page-break-after: auto;
   }
 }

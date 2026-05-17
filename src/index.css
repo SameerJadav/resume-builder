@@ -104,15 +104,10 @@ input, textarea, select {
   .preview-panel {
     padding: 0 !important;
     overflow: visible !important;
+    display: block !important;
   }
 
   .preview-page-scaler {
     zoom: 1 !important;
-  }
-
-  .preview-page {
-    box-shadow: none !important;
-    min-height: auto !important;
-    width: 100% !important;
   }
 }

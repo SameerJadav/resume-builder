@@ -92,4 +92,5 @@ export const sampleResume = {
       date: 'Mar 2023',
     },
   ],
+  pageBreaks: {},
 };

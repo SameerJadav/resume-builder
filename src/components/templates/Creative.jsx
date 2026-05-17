@@ -1,6 +1,21 @@
-import { useResume } from '../../hooks/useResume';
+/* eslint-disable react-refresh/only-export-components */
 import './shared.css';
 import './Creative.css';
+
+function CreativeHeader({ personalInfo }) {
+  return (
+    <header className="creative-header">
+      <h1>{personalInfo.fullName || 'Your Name'}</h1>
+      <div className="creative-contact">
+        {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
+          .filter(Boolean)
+          .map((item, i) => (
+            <span key={i}>{item}</span>
+          ))}
+      </div>
+    </header>
+  );
+}
 
 function SectionHeading({ children }) {
   return (
@@ -138,10 +153,7 @@ const sectionRenderers = {
   certifications: (r) => <CertificationsSection entries={r.certifications} />,
 };
 
-export default function Creative() {
-  const { resume, settings } = useResume();
-  const { personalInfo } = resume;
-
+export function getCreativeBlocks({ resume, settings }) {
   const style = {
     '--accent': settings.accentColor,
     '--font-family': settings.fontFamily,
@@ -151,23 +163,12 @@ export default function Creative() {
     '--page-margin': `${settings.pageMargin}px`,
   };
 
-  return (
-    <div className="template-root creative" style={style}>
-      <header className="creative-header">
-        <h1>{personalInfo.fullName || 'Your Name'}</h1>
-        <div className="creative-contact">
-          {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
-            .filter(Boolean)
-            .map((item, i) => (
-              <span key={i}>{item}</span>
-            ))}
-        </div>
-      </header>
-      {resume.sectionOrder
-        .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
-        .map((key) => (
-          <div key={key}>{sectionRenderers[key](resume)}</div>
-        ))}
-    </div>
-  );
+  const blocks = [
+    { key: 'personalInfo', node: <CreativeHeader personalInfo={resume.personalInfo} /> },
+    ...resume.sectionOrder
+      .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
+      .map((key) => ({ key, node: sectionRenderers[key](resume) })),
+  ].filter((b) => b.node !== null);
+
+  return { rootClass: 'creative', style, blocks, paginate: true };
 }

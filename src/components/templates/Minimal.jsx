@@ -1,6 +1,19 @@
-import { useResume } from '../../hooks/useResume';
+/* eslint-disable react-refresh/only-export-components */
 import './shared.css';
 import './Minimal.css';
+
+function MinimalHeader({ personalInfo }) {
+  return (
+    <header className="minimal-header">
+      <h1>{personalInfo.fullName || 'Your Name'}</h1>
+      <div className="minimal-contact">
+        {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
+          .filter(Boolean)
+          .join('  ·  ')}
+      </div>
+    </header>
+  );
+}
 
 function SectionHeading({ children }) {
   return <h2 className="minimal-heading">{children}</h2>;
@@ -116,10 +129,7 @@ const sectionRenderers = {
   certifications: (r) => <CertificationsSection entries={r.certifications} />,
 };
 
-export default function Minimal() {
-  const { resume, settings } = useResume();
-  const { personalInfo } = resume;
-
+export function getMinimalBlocks({ resume, settings }) {
   const style = {
     '--accent': settings.accentColor,
     '--font-family': settings.fontFamily,
@@ -129,21 +139,12 @@ export default function Minimal() {
     '--page-margin': `${settings.pageMargin}px`,
   };
 
-  return (
-    <div className="template-root minimal" style={style}>
-      <header className="minimal-header">
-        <h1>{personalInfo.fullName || 'Your Name'}</h1>
-        <div className="minimal-contact">
-          {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website]
-            .filter(Boolean)
-            .join('  ·  ')}
-        </div>
-      </header>
-      {resume.sectionOrder
-        .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
-        .map((key) => (
-          <div key={key}>{sectionRenderers[key](resume)}</div>
-        ))}
-    </div>
-  );
+  const blocks = [
+    { key: 'personalInfo', node: <MinimalHeader personalInfo={resume.personalInfo} /> },
+    ...resume.sectionOrder
+      .filter((key) => key !== 'personalInfo' && sectionRenderers[key])
+      .map((key) => ({ key, node: sectionRenderers[key](resume) })),
+  ].filter((b) => b.node !== null);
+
+  return { rootClass: 'minimal', style, blocks, paginate: true };
 }

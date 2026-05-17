@@ -1,4 +1,4 @@
-import { useResume } from '../../hooks/useResume';
+/* eslint-disable react-refresh/only-export-components */
 import './shared.css';
 import './Modern.css';
 
@@ -142,21 +142,10 @@ const mainRenderers = {
   projects: (resume) => <MainProjects entries={resume.projects} />,
 };
 
-export default function Modern() {
-  const { resume, settings } = useResume();
+function ModernLayout({ resume }) {
   const { personalInfo } = resume;
-
-  const style = {
-    '--accent': settings.accentColor,
-    '--font-family': settings.fontFamily,
-    '--font-size': `${settings.fontSize}pt`,
-    '--line-height': settings.lineHeight,
-    '--section-spacing': `${settings.sectionSpacing}px`,
-    '--page-margin': `${settings.pageMargin}px`,
-  };
-
   return (
-    <div className="template-root modern" style={style}>
+    <div className="modern-layout">
       <div className="modern-sidebar">
         <div className="modern-sidebar__name">
           <h1>{personalInfo.fullName || 'Your Name'}</h1>
@@ -174,4 +163,21 @@ export default function Modern() {
       </div>
     </div>
   );
+}
+
+export function getModernBlocks({ resume, settings }) {
+  const style = {
+    '--accent': settings.accentColor,
+    '--font-family': settings.fontFamily,
+    '--font-size': `${settings.fontSize}pt`,
+    '--line-height': settings.lineHeight,
+    '--section-spacing': `${settings.sectionSpacing}px`,
+    '--page-margin': `${settings.pageMargin}px`,
+  };
+
+  const blocks = [
+    { key: 'modern-layout', node: <ModernLayout resume={resume} /> },
+  ];
+
+  return { rootClass: 'modern', style, blocks, paginate: false };
 }

@@ -2,8 +2,6 @@
   font-family: var(--font-family);
   font-size: var(--font-size);
   line-height: var(--line-height);
-  padding: var(--page-margin);
-  padding-top: calc(var(--page-margin) * 1.5);
 }
 
 .minimal-header {
